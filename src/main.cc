@@ -96,7 +96,7 @@ NAN_METHOD(convert_blob) {
     //convert
     block b = AUTO_VAL_INIT(b);
     if (!parse_and_validate_block_from_blob(input, b))
-        return THROW_ERROR_EXCEPTION("Failed to parse block");
+        return THROW_ERROR_EXCEPTION("Failed to parse block 1");
 
     if (!get_block_hashing_blob(b, output))
         return THROW_ERROR_EXCEPTION("Failed to create mining block");
@@ -123,7 +123,7 @@ NAN_METHOD(convert_blob_fa) {
     //convert
     block b = AUTO_VAL_INIT(b);
     if (!parse_and_validate_block_from_blob(input, b))
-        return THROW_ERROR_EXCEPTION("Failed to parse block");
+        return THROW_ERROR_EXCEPTION("Failed to parse block 2");
 
      else {
         block parent_block;
@@ -160,7 +160,7 @@ void get_block_id(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
     block b = AUTO_VAL_INIT(b);
     if (!parse_and_validate_block_from_blob(input, b))
-        return THROW_ERROR_EXCEPTION("Failed to parse block");
+        return THROW_ERROR_EXCEPTION("Failed to parse block 3");
 
     crypto::hash block_id;
     if (!get_block_hash(b, block_id))
@@ -194,7 +194,7 @@ void construct_block_blob(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
     block b = AUTO_VAL_INIT(b);
     if (!parse_and_validate_block_from_blob(block_template_blob, b))
-        return THROW_ERROR_EXCEPTION("Failed to parse block");
+        return THROW_ERROR_EXCEPTION("Failed to parse block 4");
     b.nonce = nonce;
     if (!block_to_blob(b, output))
         return THROW_ERROR_EXCEPTION("Failed to convert block to blob");
@@ -226,7 +226,7 @@ void construct_block_blob_fa(const Nan::FunctionCallbackInfo<v8::Value>& info) {
 
     block b = AUTO_VAL_INIT(b);
     if (!parse_and_validate_block_from_blob(block_template_blob, b))
-        return THROW_ERROR_EXCEPTION("Failed to parse block");
+        return THROW_ERROR_EXCEPTION("Failed to parse block 5");
 
     b.nonce = nonce;
     if (b.major_version == BLOCK_MAJOR_VERSION_2) {
@@ -264,7 +264,7 @@ void convert_blob_bb(const Nan::FunctionCallbackInfo<v8::Value>& info) {
     //convert
     bb_block b = AUTO_VAL_INIT(b);
     if (!parse_and_validate_block_from_blob(input, b)) {
-        return THROW_ERROR_EXCEPTION("Failed to parse block");
+        return THROW_ERROR_EXCEPTION("Failed to parse block 6");
     }
     output = get_block_hashing_blob(b);
 
